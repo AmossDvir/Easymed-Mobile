@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Styling';
-import { View, Image, Pressable } from 'react-native';
+import { View, Image, Pressable, StatusBar } from 'react-native';
 
 const EmergencyButton = () => {
     const [isPressed, setIsPressed] = useState(false);
@@ -9,7 +9,8 @@ const EmergencyButton = () => {
         setIsPressed(!isPressed);
     }
   return (
-    <View>
+    <View style={{flex:1, alignItems:'flex-start', justifyContent:'center'}}>
+      {isPressed && <StatusBar backgroundColor='#FE405C'></StatusBar>}
         <Pressable onPress={handlePress}>
       <Image source={require('../assets/Emergency.png')} style={[styles.emergencyButton, isPressed && styles.emergencyActive]} />
       </Pressable>

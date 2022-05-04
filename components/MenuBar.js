@@ -8,10 +8,12 @@ import HamburgerMenu from './HamburgerMenu';
 const MenuBar = () => {
   return (
     <View style={[styles.menuBar]}>
-      <View style={{
-          alignItems: 'center',
+      <View style={{flex:1,paddingLeft: 20, paddingRight: 20, flexDirection:'row'}}>
+      <View
+        style={{
+          alignItems: 'flex-start',
           justifyContent: 'center',
-          flex: 1,
+          flex:2
         }}>
         <HamburgerMenu></HamburgerMenu>
       </View>
@@ -31,6 +33,7 @@ const MenuBar = () => {
           flex: 3,
         }}>
         <EmergencyButton></EmergencyButton>
+      </View>
       </View>
     </View>
   );

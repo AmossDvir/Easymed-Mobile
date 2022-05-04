@@ -1,14 +1,6 @@
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
-import {
-  NativeBaseProvider,
-  Divider,
-  Flex,
-  Menu,
-  Pressable,
-  HamburgerIcon,
-  Box,
-} from 'native-base';
+import Menu from 'react' 
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {
   SafeAreaView,
@@ -49,6 +41,7 @@ const App = () => {
     }
   }
 
+
   const [location, setLocation] = useState(null);
   const [loading, setLoading] = useState(true);
   const [renderedList, setRenderedList] = useState(<Text></Text>);
@@ -58,7 +51,7 @@ const App = () => {
       'https://easymed-app.herokuapp.com/by_params/?radius=20&care=All+Types&er=All+Institutes&north=351924458&east=31779513',
     );
     setRenderedList(
-      data.map(hospital => <Text key={hospital.name}>{hospital.name}</Text>),
+      data.map(hospital => <Text style={styles.defaultFont} key={hospital.name}>{hospital.name}</Text>),
     );
     // console.log(data);
   };
@@ -83,8 +76,9 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor='red' barStyle='light-content' ></StatusBar>
       <View>
+      <View>
+
       <MenuBar></MenuBar>
       </View>
       {/* <View style={{backgroundColor:'gray', width:'100%', height:'7%'}}> */}
@@ -94,7 +88,7 @@ const App = () => {
 
       {/* <Image source={require('../assets/Logo.png')} style={styles.topLogo} /> */}
 
-      {/* <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
 
         <View>
           <MapView
@@ -122,8 +116,9 @@ const App = () => {
         <View>{renderedList}</View>
         <Text style={styles.button1}>Click to get a list of hospitals:</Text>
         <Button title="Click Me!" onPress={getHospitals}></Button>
-        <StatusBar style="auto" />
-      </ScrollView> */}
+        {/* <StatusBar style="auto" /> */}
+      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
