@@ -1,22 +1,16 @@
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
-import Menu from 'react' 
-import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {
   SafeAreaView,
-  StatusBar,
-  Alert,
   ScrollView,
   Text,
   View,
-  Image,
   Button,
 } from 'react-native';
-import {PermissionsAndroid} from 'react-native';
+import { PermissionsAndroid } from 'react-native';
 import MapView from 'react-native-maps';
 import Geolocation from 'react-native-geolocation-service';
 import styles from './Styling';
-import EmergencyButton from './EmergencyButton';
 import MenuBar from './MenuBar';
 
 const App = () => {
@@ -50,7 +44,9 @@ const App = () => {
     const {data} = await axios.get(
       'https://easymed-app.herokuapp.com/by_params/?radius=20&care=All+Types&er=All+Institutes&north=351924458&east=31779513',
     );
+    console.log("HHH"+data);
     setRenderedList(
+      
       data.map(hospital => <Text style={styles.defaultFont} key={hospital.name}>{hospital.name}</Text>),
     );
     // console.log(data);
@@ -81,13 +77,7 @@ const App = () => {
 
       <MenuBar></MenuBar>
       </View>
-      {/* <View style={{backgroundColor:'gray', width:'100%', height:'7%'}}> */}
-
-      {/* </View> */}
-
-
-      {/* <Image source={require('../assets/Logo.png')} style={styles.topLogo} /> */}
-
+      
       <ScrollView contentContainerStyle={styles.scrollContent}>
 
         <View>
@@ -116,7 +106,6 @@ const App = () => {
         <View>{renderedList}</View>
         <Text style={styles.button1}>Click to get a list of hospitals:</Text>
         <Button title="Click Me!" onPress={getHospitals}></Button>
-        {/* <StatusBar style="auto" /> */}
       </ScrollView>
       </View>
     </SafeAreaView>
